@@ -1,0 +1,43 @@
+<!doctype html>
+<html th:replace="base :: html" lang="fr" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+    <main class="py-5">
+        <div class="container">
+
+        <h1 class="mb-4">Modifier le Todo</h1>
+
+        <form th:action="@{/todoapp/admin/todos/update}"
+              th:object="${todo}"
+              method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="mb-3">
+                <label for="titre" class="form-label">Titre</label>
+                <input type="text"
+                       id="titre"
+                       th:field="*{titre}"
+                       class="form-control"
+                       required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description"
+                          th:field="*{description}"
+                          class="form-control"
+                          rows="4"
+                          required></textarea>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary me-2">
+                    Mettre à jour
+                </button>
+                <a th:href="@{/todoapp/admin/todos}" class="btn btn-secondary">
+                    Annuler
+                </a>
+            </div>
+        </form>
+
+
+        </div>
+    </main>
+</div>
+</html>

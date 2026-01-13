@@ -1,5 +1,6 @@
 package org.ldv.todo0.controller
 
+import org.ldv.todo0.model.dao.CategorieDao
 import org.ldv.todo0.model.dao.TodoDao
 import org.ldv.todo0.model.entity.Todo
 import org.springframework.stereotype.Controller
@@ -9,7 +10,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
 @Controller
 class AdminTodoController(
-    val todoDao: TodoDao
+    val todoDao: TodoDao,
+    val categorieDao: CategorieDao
 ) {
 
 
@@ -34,6 +36,8 @@ class AdminTodoController(
             titre = "",
             description = ""
         )
+        val categories = categorieDao.findAll()
+        model.addAttribute("categories", categories)
         model.addAttribute("todo", nouveauTodo)
         return "pagesAdmin/todo/create"
     }
@@ -53,6 +57,8 @@ class AdminTodoController(
     @GetMapping("/todoapp/admin/todos/edit/{id}")
     fun edit(@PathVariable id: Long, model: Model): String {
         val todo = todoDao.findById(id).orElseThrow()
+        val categories = categorieDao.findAll()
+        model.addAttribute("categories", categories)
         model.addAttribute("todo", todo)
         return "pagesAdmin/todo/edit"
     }

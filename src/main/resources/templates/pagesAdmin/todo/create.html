@@ -28,6 +28,16 @@
                           placeholder="Description du todo"
                           required></textarea>
             </div>
+            <div class="mb-3">
+                <label for="categorie">Categorie :</label>
+                <select required th:field="*{categorie}" id="categorie" class="form-select">
+                    <option selected disabled value="">Choisir une categorie</option>
+                    <option th:each="uneCategorie : ${categories}"
+                            th:value="${uneCategorie.id}"
+                            th:text="${uneCategorie.nom}">
+                    </option>
+                </select>
+            </div>
 
             <div class="mt-4">
                 <button type="submit" class="btn btn-primary me-2">

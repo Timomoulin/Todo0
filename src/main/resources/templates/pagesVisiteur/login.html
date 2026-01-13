@@ -1,0 +1,27 @@
+<!doctype html>
+<html th:replace="base :: html" lang="fr" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+    <main class="py-5">
+        <div class="container">
+            <div class="col-8 col-lg-6 mx-auto p-2  mt-3">
+                <form action="/todoapp/login" method="post">
+                    <h1>Login</h1>
+                    <!-- Affiche le message d'erreur si l'attribut "error" est présent dans le modèle -->
+                    <p th:if="${error}" class="alert alert-danger">Identifiants incorrects. Veuillez réessayer.</p>
+                    <div class="mb-3">
+                        <label for="username">Email</label>
+                        <input required class="form-control" id="username" name="username" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Mdp</label>
+                        <input required class="form-control" id="password" name="password" type="password">
+                    </div>
+                    <button class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+</html>

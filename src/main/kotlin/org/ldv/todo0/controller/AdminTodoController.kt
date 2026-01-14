@@ -17,7 +17,7 @@ class AdminTodoController(
 
     @GetMapping("/todoapp/admin/todos")
     fun index(model: Model): String {
-        val todos = todoDao.findAll()
+        val todos = todoDao.findByOrderByTitreAsc()
         model.addAttribute("todos", todos)
         return "pagesAdmin/todo/index"
     }

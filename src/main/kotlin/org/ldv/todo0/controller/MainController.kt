@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam
 @Controller
 class MainController {
 
+    @GetMapping("/", "/todoapp/")
+    fun index(): String {
+        return "pagesVisiteur/home"
+    }
+
     @GetMapping("/todoapp/login")
     fun login(@RequestParam error: Boolean?, model: Model): String {
         // Ajoute un attribut "error" au modèle si la requête contient une erreur

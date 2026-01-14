@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface UtilisateurDao : JpaRepository<Utilisateur, Long> {
 
 
-    fun findByEmail(email: String): Utilisateur
+    fun findByEmail(email: String): Utilisateur?
 
 }

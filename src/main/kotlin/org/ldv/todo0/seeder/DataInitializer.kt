@@ -58,7 +58,9 @@ class DataInitializer (
                     mdp = passwordEncoder.encode("client123")!!, // mot de passe hashé
                     role = roleUtilisateur
                 )
+                utilisateurDao.saveAll(listOf(admin, utilisateur))
             }
+
         }
     }
 

@@ -7,7 +7,7 @@
             <h1 class="mb-5 text-center">Administration des Todos</h1>
 
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1>Todos</h1>
+
                 <a th:href="@{/todoapp/admin/todos/create}" class="btn btn-success">
                     + Nouveau Todo
                 </a>
@@ -31,7 +31,7 @@
                     <td th:text="${todo.id}"></td>
                     <td th:text="${todo.titre}"></td>
                     <td th:text="${todo.description}"></td>
-                    <td th:text="${#temporals.format(todo.dateCréation, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${#temporals.format(todo.dateCreation, 'dd/MM/yyyy HH:mm')}"></td>
                     <td>
                         <a th:href="@{'/todoapp/admin/todos/' + ${todo.id}}"
                            class="btn btn-primary btn-sm me-2">

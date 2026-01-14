@@ -4,12 +4,50 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Todo App</title>
-    <link rel="stylesheet" th:href="@{css/bootstrap.css}">
+    <link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
 <div class="min-vh-100">
-    <header>
+    <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 px-2 border-bottom">
+        <div class="col-md-3 mb-2 mb-md-0"><a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+            <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a></div>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a th:href="@{/todoapp}" class="nav-link px-2 link-secondary">Accueil</a></li>
 
+            <li sec:authorize="hasRole('ADMIN')" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Administration
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/todoapp/admin/categories}">Admin Categorie</a></li>
+                    <li><a class="dropdown-item"th:href="@{/todoapp/admin/todos}">Admin Todo</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="col-md-3 text-end nav">
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <form action="/todoapp/logout" method="post">
+                    <button class="btn btn-outline-primary me-2">Logout</button>
+                </form>
+            </li>
+            <li>
+                <a sec:authorize="isAuthenticated()" th:href="@{/todoapp/profil}" type="button" class="btn btn-outline-primary me-2">Mon Profil</a>
+            </li>
+            <li>
+                <a sec:authorize="isAnonymous()" th:href="@{/todoapp/login}" type="button" class="btn btn-outline-primary me-2">Login</a>
+            </li>
+            <li>
+                <a sec:authorize="isAnonymous()"  th:href="@{/todoapp/register}" type="button" class="btn btn-primary">Inscription</a>
+            </li>
+
+
+
+        </ul>
     </header>
     <main>
         <div class="container" th:replace="::content">
@@ -17,9 +55,19 @@
         </div>
     </main>
 </div>
-<div>
 
-</div>
-<script th:src="@{js/bootstrap.js}"></script>
+    <footer class="py-3 my-4">
+        <!--Votre pied de page-->
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+    </footer>
+
+<script src="/js/bootstrap.bundle.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package org.ldv.todo0.service
 
 import org.ldv.todo0.model.dao.UtilisateurDao
+import org.ldv.todo0.model.entity.Role
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
@@ -42,7 +43,12 @@ class MyUserDetailsService(private val utilisateurDAO: UtilisateurDao) : UserDet
          * - on récupère le nom du rôle associé à l'utilisateur (ex: "ADMIN", "CLIENT").
          * - Ce rôle doit être une chaîne compatible avec Spring Security.
          */
-        val leRole = utilisateur.role?.nom !!
+        var leRole = "VISITEUR"
+
+        if(utilisateur.role != null)
+        {
+            leRole = utilisateur.role!!.nom
+        }
 
         /**
          * Exemple alternatif (commenté) si tu utilises un héritage :

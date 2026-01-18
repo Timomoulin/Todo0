@@ -1,5 +1,6 @@
 package org.ldv.todo0.controller
 
+import jakarta.validation.Valid
 import org.ldv.todo0.model.dao.RoleDao
 import org.ldv.todo0.model.dao.UtilisateurDao
 import org.ldv.todo0.model.entity.Role
@@ -10,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
@@ -67,25 +69,44 @@ class MainController (
 
     @PostMapping("/todoapp/inscription",)
     fun submitForm(
-        @ModelAttribute("utilisateur") utilisateurForm: Utilisateur,
+        @Valid @ModelAttribute("utilisateur") utilisateurForm: Utilisateur,
+        bindingResult: BindingResult,
         redirectAttributes: RedirectAttributes
     ): String {
 
+        // Vérification email unique
         if (utilisateurDao.existsByEmail(utilisateurForm.email)) {
-            redirectAttributes.addFlashAttribute(
-                "error",
-                "Un compte avec cet email existe déjà."
+            bindingResult.rejectValue(
+                "email",
+                "error.email",
+                "Un compte avec cet email existe déjà"
             )
-            return "redirect:/todoapp/inscription"
         }
 
-        // Vérifier mots de passe identiques
+        // Vérification confirmation mot de passe
         if (utilisateurForm.mdp != utilisateurForm.confirmationMdp) {
-            redirectAttributes.addFlashAttribute(
-                "error",
-                "Les mots de passe ne correspondent pas."
+            bindingResult.rejectValue(
+                "confirmationMdp",
+                "error.confirmationMdp",
+                "Les mots de passe ne correspondent pas"
             )
-            return "redirect:/todoapp/inscription"
+        }
+
+        // Validation mot de passe fort
+        val passwordPattern =
+            Regex("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]).{8,}\$")
+
+        if (!passwordPattern.matches(utilisateurForm.mdp)) {
+            bindingResult.rejectValue(
+                "mdp",
+                "error.mdp",
+                "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial"
+            )
+        }
+
+        // Si erreurs → retourne formulaire
+        if (bindingResult.hasErrors()) {
+            return "pagesVisiteur/inscription"
         }
         val roleUtilisateur = roleDao.findByNomIgnoreCase("UTILISATEUR").orElseThrow { IllegalStateException("UTILISATEUR introuvable")}
 

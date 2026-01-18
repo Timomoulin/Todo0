@@ -33,6 +33,10 @@
                        class="form-control"
                        placeholder="Votre nom"
                        required>
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('nom')}"
+                     th:errors="*{nom}">
+                </div>
             </div>
 
             <!-- Prénom -->
@@ -44,6 +48,10 @@
                        class="form-control"
                        placeholder="Votre prénom"
                        required>
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('prenom')}"
+                     th:errors="*{prenom}">
+                </div>
             </div>
 
             <!-- Email -->
@@ -55,6 +63,10 @@
                        class="form-control"
                        placeholder="exemple@email.com"
                        required>
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('email')}"
+                     th:errors="*{email}">
+                </div>
             </div>
 
             <!-- Mot de passe -->
@@ -66,6 +78,10 @@
                        class="form-control"
                        placeholder="Mot de passe"
                        required>
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('mdp')}"
+                     th:errors="*{mdp}">
+                </div>
             </div>
 
             <!-- Confirmation mot de passe -->
@@ -79,6 +95,10 @@
                        class="form-control"
                        placeholder="Confirmez le mot de passe"
                        required>
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('mdp')}"
+                     th:errors="*{mdp}">
+                </div>
             </div>
 
             <!-- Actions -->

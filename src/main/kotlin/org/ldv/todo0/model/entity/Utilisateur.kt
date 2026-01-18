@@ -13,6 +13,7 @@ import jakarta.persistence.PreUpdate
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
+import jakarta.validation.constraints.*
 
 
 /**
@@ -36,21 +37,29 @@ class Utilisateur(
     /**
      * Nom de l'utilisateur.
      */
+    @field:NotBlank(message = "Le nom est obligatoire")
+    @field:Size(min = 2, max = 50, message = "Le nom doit contenir entre 2 et 50 caractères")
     var nom: String,
     /**
      * Prénom de l'utilisateur.
      */
+    @field:NotBlank(message = "Le prénom est obligatoire")
+    @field:Size(min = 2, max = 50, message = "Le prénom doit contenir entre 2 et 50 caractères")
     var prenom: String,
     /**
      * Adresse e-mail de l'utilisateur.
      * Peut servir comme identifiant de connexion.
      */
+    @field:NotBlank(message = "L'email est obligatoire")
+    @field:Email(message = "Format d'email invalide")
     @Column(unique = true)
     val email: String,
     /**
      * Mot de passe de l'utilisateur.
      * ⚠️ À stocker obligatoirement hashé (BCrypt) !
      */
+    @field:NotBlank(message = "Le mot de passe est obligatoire")
+    @field:Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
     var mdp: String,
     /**
      * Mot de passe de confirmation de l'utilisateur (Transient == Propriété non-persistée ).

@@ -7,5 +7,5 @@ interface UtilisateurDao : JpaRepository<Utilisateur, Long> {
 
 
     fun findByEmail(email: String): Utilisateur?
-
+    fun existsByEmail(email: String): Boolean
 }

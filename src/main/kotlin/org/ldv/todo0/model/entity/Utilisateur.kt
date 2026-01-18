@@ -1,5 +1,6 @@
 package org.ldv.todo0.model.entity
 
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -7,6 +8,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
+import jakarta.persistence.OneToMany
 import jakarta.persistence.PreUpdate
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
@@ -43,12 +45,19 @@ class Utilisateur(
      * Adresse e-mail de l'utilisateur.
      * Peut servir comme identifiant de connexion.
      */
+    @Column(unique = true)
     val email: String,
     /**
      * Mot de passe de l'utilisateur.
      * ⚠️ À stocker obligatoirement hashé (BCrypt) !
      */
     var mdp: String,
+    /**
+     * Mot de passe de confirmation de l'utilisateur (Transient == Propriété non-persistée ).
+     *
+     */
+    @Transient
+    var confirmationMdp: String="",
     /**
      * Date de création de l’enregistrement.
      * - initialisée automatiquement lors de la création
@@ -64,13 +73,14 @@ class Utilisateur(
     @UpdateTimestamp
     var dateModification: LocalDateTime = LocalDateTime.now(),
 
+
     /**
-     * Relation ManyToOne : un utilisateur possède un seul rôle.
+     * Relation ManyToZero : un utilisateur possède un seul rôle.
      * - @JoinColumn : nom de la colonne clé étrangère (role_id)
      */
     @ManyToOne
     @JoinColumn(name = "role_id")
-    val role: Role? = null
+    val role: Role? = null,
 ) {
 
 }

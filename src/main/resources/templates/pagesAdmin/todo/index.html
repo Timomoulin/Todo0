@@ -35,7 +35,12 @@
                     <td th:text="${todo.titre}"></td>
                     <td th:text="${todo.description}"></td>
                     <td th:text="${todo.etreFait ? 'Fait' : 'A Faire'}"></td>
-                    <td th:text="${todo.categorie.nom}"></td>
+                    <td >
+                                <span class="badge"
+                                      th:style="'background-color:' + ${todo.categorie.couleur}">
+                            <span th:text="${todo.categorie.nom}"></span>
+                        </span>
+                    </td>
                     <td th:text="${#temporals.format(todo.dateCreation, 'dd/MM/yyyy HH:mm')}"></td>
                     <td th:text="${#temporals.format(todo.dateModification, 'dd/MM/yyyy HH:mm')}"></td>
                     <td>

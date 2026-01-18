@@ -13,8 +13,8 @@ class Role (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    var id: Long? = null,
+    val id: Long? = null,
     var nom:String,
     @OneToMany(mappedBy = "role", cascade = [CascadeType.ALL], orphanRemoval = true)
-    var utilisateurs: MutableList<Utilisateur> = mutableListOf()
+    val utilisateurs: MutableList<Utilisateur> = mutableListOf()
 )

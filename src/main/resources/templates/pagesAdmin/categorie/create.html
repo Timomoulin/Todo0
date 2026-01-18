@@ -1,0 +1,49 @@
+<!doctype html>
+<html th:replace="base :: html"
+      lang="fr"
+      xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="content">
+    <main class="py-5 container">
+
+        <h1 class="mb-4">Créer une nouvelle catégorie</h1>
+
+        <form th:action="@{/todoapp/admin/categories}"
+              th:object="${categorie}"
+              method="post">
+
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom *</label>
+                <input type="text"
+                       id="nom"
+                       th:field="*{nom}"
+                       class="form-control"
+                       placeholder="Nom de la catégorie"
+                       required>
+            </div>
+
+            <div class="mb-3">
+                <label for="couleur" class="form-label">Couleur *</label>
+                <input type="color"
+                       id="couleur"
+                       th:field="*{couleur}"
+                       class="form-control form-control-color"
+                       required>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit"
+                        class="btn btn-primary me-2">
+                    Enregistrer
+                </button>
+                <a th:href="@{/todoapp/admin/categories}"
+                   class="btn btn-secondary">
+                    Annuler
+                </a>
+            </div>
+
+        </form>
+
+    </main>
+</div>
+</html>

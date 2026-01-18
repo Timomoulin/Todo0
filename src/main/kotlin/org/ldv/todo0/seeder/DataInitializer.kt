@@ -46,7 +46,7 @@ class DataInitializer (
                     nom = "Super",
                     prenom = "Admin",
                     email = "admin@admin.com",
-                    mdp = passwordEncoder.encode("admin123")!!, // mot de passe hashé
+                    mdp = passwordEncoder.encode("admin123")!!,
                     role = roleAdmin
                 )
 
@@ -55,7 +55,7 @@ class DataInitializer (
                     nom = "Jean",
                     prenom = "Client",
                     email = "client@client.com",
-                    mdp = passwordEncoder.encode("client123")!!, // mot de passe hashé
+                    mdp = passwordEncoder.encode("client123")!!,
                     role = roleUtilisateur
                 )
                 utilisateurDao.saveAll(listOf(admin, utilisateur))

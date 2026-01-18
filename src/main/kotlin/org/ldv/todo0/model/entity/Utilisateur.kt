@@ -8,6 +8,8 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.PreUpdate
+import org.hibernate.annotations.CreationTimestamp
+import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
 
@@ -28,7 +30,7 @@ class Utilisateur(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    var id: Long? = null,
+    val id: Long? = null,
     /**
      * Nom de l'utilisateur.
      */
@@ -41,7 +43,7 @@ class Utilisateur(
      * Adresse e-mail de l'utilisateur.
      * Peut servir comme identifiant de connexion.
      */
-    var email: String,
+    val email: String,
     /**
      * Mot de passe de l'utilisateur.
      * ⚠️ À stocker obligatoirement hashé (BCrypt) !
@@ -52,13 +54,14 @@ class Utilisateur(
      * - initialisée automatiquement lors de la création
      * - non modifiable après insertion (updatable = false)
      */
-    @Column(nullable = false, updatable = false)
-    var dateCreation: LocalDateTime = LocalDateTime.now(),
+    @CreationTimestamp
+    @Column(updatable = false)
+    val dateCreation: LocalDateTime = LocalDateTime.now(),
     /**
      * Date de dernière modification de l'enregistrement.
      * Mise à jour automatiquement avant chaque mise à jour en base (@PreUpdate).
      */
-    @Column(nullable = false)
+    @UpdateTimestamp
     var dateModification: LocalDateTime = LocalDateTime.now(),
 
     /**
@@ -67,15 +70,7 @@ class Utilisateur(
      */
     @ManyToOne
     @JoinColumn(name = "role_id")
-    open var role: Role? = null
+    val role: Role? = null
 ) {
 
-    /**
-     * Méthode exécutée automatiquement avant chaque update JPA.
-     * Elle met à jour la date de modification.
-     */
-    @PreUpdate
-    fun preUpdate() {
-        dateModification = LocalDateTime.now()
-    }
 }

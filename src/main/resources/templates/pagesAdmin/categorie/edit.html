@@ -1,0 +1,52 @@
+<!doctype html>
+<html th:replace="base :: html"
+      lang="fr"
+      xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="content">
+    <main class="py-5">
+        <div class="container">
+
+            <h1 class="mb-4">Modifier la catégorie</h1>
+
+            <form th:action="@{/todoapp/admin/categories/update}"
+                  th:object="${categorie}"
+                  method="post">
+
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom *</label>
+                    <input type="text"
+                           id="nom"
+                           th:field="*{nom}"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="couleur" class="form-label">Couleur *</label>
+                    <input type="color"
+                           id="couleur"
+                           th:field="*{couleur}"
+                           class="form-control form-control-color"
+                           required>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit"
+                            class="btn btn-primary me-2">
+                        Mettre à jour
+                    </button>
+                    <a th:href="@{/todoapp/admin/categories}"
+                       class="btn btn-secondary">
+                        Annuler
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+    </main>
+</div>
+</html>

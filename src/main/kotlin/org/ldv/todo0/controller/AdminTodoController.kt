@@ -24,7 +24,7 @@ class AdminTodoController(
 
 
     @GetMapping("/todoapp/admin/todos/{id}")
-    fun show(@PathVariable id: Long, model: Model): String {
+    fun show(@PathVariable id: Long): String {
 
         return "pagesAdmin/todo/show"
     }
@@ -34,7 +34,7 @@ class AdminTodoController(
     fun create(model: Model): String {
         val nouveauTodo = Todo(
             titre = "",
-            description = ""
+            description = "",
         )
         val categories = categorieDao.findAll()
         model.addAttribute("categories", categories)
@@ -49,7 +49,7 @@ class AdminTodoController(
         redirectAttributes: RedirectAttributes
     ): String {
         todoDao.save(todo)
-        redirectAttributes.addFlashAttribute("msg", "Le todo a bien été créé")
+        redirectAttributes.addFlashAttribute("msg", "Le Todo a bien été créé")
         return "redirect:/todoapp/admin/todos"
     }
 
@@ -72,7 +72,7 @@ class AdminTodoController(
         todoDao.save(todo)
         redirectAttributes.addFlashAttribute(
             "msg",
-            "Le todo '${todo.titre}' a bien été modifié."
+            "Le Todo '${todo.titre}' a bien été modifié."
         )
         return "redirect:/todoapp/admin/todos"
     }

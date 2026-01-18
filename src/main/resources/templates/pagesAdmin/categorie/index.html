@@ -1,0 +1,77 @@
+<!doctype html>
+<html th:replace="base :: html"
+      lang="fr"
+      xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="content">
+    <main class="py-5">
+        <div class="container">
+
+            <h1 class="mb-5 text-center">Administration des Catégories</h1>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <a th:href="@{/todoapp/admin/categories/create}"
+                   class="btn btn-success">
+                    + Nouvelle catégorie
+                </a>
+            </div>
+
+            <div th:if="${msg}"
+                 class="alert alert-success"
+                 th:text="${msg}">
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Couleur</th>
+                    <th>Todos</th>
+                    <th>Date création</th>
+                    <th>Date modification</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="categorie : ${categories}">
+                    <td th:text="${categorie.id}"></td>
+                    <td th:text="${categorie.nom}"></td>
+                    <td>
+                        <span class="badge"
+                              th:style="'background-color:' + ${categorie.couleur}">
+                            <span th:text="${categorie.couleur}"></span>
+                        </span>
+                    </td>
+                    <td th:text="${categorie.todos.size()}"></td>
+                    <td th:text="${#temporals.format(categorie.dateCreation, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${#temporals.format(categorie.dateModification, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td>
+                        <a th:href="@{'/todoapp/admin/categories/edit/' + ${categorie.id}}"
+                           class="btn btn-warning btn-sm me-2">
+                            Modifier
+                        </a>
+
+                        <form th:action="@{/todoapp/admin/categories/delete}"
+                              method="post"
+                              class="d-inline">
+                            <input type="hidden"
+                                   name="id"
+                                   th:value="${categorie.id}"/>
+                            <button type="submit"
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Supprimer cette catégorie et tous ses todos ?');">
+                                Supprimer
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+</div>
+</html>

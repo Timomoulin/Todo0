@@ -21,7 +21,10 @@
                     <th>Id</th>
                     <th>Titre</th>
                     <th>Description</th>
+                    <th>Statut</th>
+                    <th>Catégorie</th>
                     <th>Date création</th>
+                    <th>Date Modification</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -31,7 +34,10 @@
                     <td th:text="${todo.id}"></td>
                     <td th:text="${todo.titre}"></td>
                     <td th:text="${todo.description}"></td>
+                    <td th:text="${todo.etreFait ? 'Fait' : 'A Faire'}"></td>
+                    <td th:text="${todo.categorie.nom}"></td>
                     <td th:text="${#temporals.format(todo.dateCreation, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${#temporals.format(todo.dateModification, 'dd/MM/yyyy HH:mm')}"></td>
                     <td>
                         <a th:href="@{'/todoapp/admin/todos/' + ${todo.id}}"
                            class="btn btn-primary btn-sm me-2">

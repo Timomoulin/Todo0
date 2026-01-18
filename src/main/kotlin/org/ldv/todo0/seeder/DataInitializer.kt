@@ -6,6 +6,7 @@ import org.ldv.todo0.model.dao.TodoDao
 import org.ldv.todo0.model.dao.UtilisateurDao
 import org.ldv.todo0.model.entity.Categorie
 import org.ldv.todo0.model.entity.Role
+import org.ldv.todo0.model.entity.Todo
 import org.ldv.todo0.model.entity.Utilisateur
 import org.springframework.boot.CommandLineRunner
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -26,6 +27,15 @@ class DataInitializer (
             val catTravail = Categorie(nom = "Travail", couleur = "#aaaaaa")
             categorieDao.saveAll(mutableListOf(catLoisir, catTravail))
             println("✅ Données initiales insérées : ${categorieDao.count()} catégories.")
+            if (todoDao.count () == 0L){
+                val todoVideo = Todo(
+                    titre = "Faire une vidéo de demonstration",
+                    description = "Vidéo de démonstration de l'application Todo0",
+                    categorie = catTravail
+                )
+                todoDao.save(todoVideo)
+                println("✅ Données initiales insérées : ${todoDao.count()} todo.")
+            }
         }
 
         if (roleDao.count() == 0L) {

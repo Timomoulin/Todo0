@@ -12,6 +12,19 @@ import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
+/**
+ * Représente une tâche à réaliser.
+ * Mappée sur une table SQL à l'aide de l'annotation @Entity.
+ *
+ * @property id Identifiant unique de la tâche, généré automatiquement par la base de données (auto-increment).
+ * @property titre Titre de la tâche.
+ * @property description Description détaillée de la tâche.
+ * @property etreFait Indicateur précisant si la tâche est marquée comme faite ou non.
+ * @property dateAFaire Date et heure prévues pour la réalisation de la tâche.
+ * @property categorie Catégorie à laquelle la tâche est associée.
+ * @property dateCreation Date de création de la tâche, définie automatiquement à l'insertion et non modifiable.
+ * @property dateModification Date de dernière modification de la tâche, mise à jour automatiquement à chaque modification.
+ */
 @Entity
 class Todo (
     @Id

@@ -12,6 +12,18 @@ import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
+/**
+ * Représente une catégorie utilisée pour organiser les tâches.
+ * Mappée sur une table SQL à l'aide de l'annotation @Entity.
+ *
+ * @property id Identifiant unique de la catégorie, généré automatiquement par la base de données.
+ * @property nom Nom ou libellé de la catégorie.
+ * @property couleur Couleur associée à la catégorie, utilisée pour l'affichage ou la distinction visuelle.
+ * @property todos Liste des tâches associées à cette catégorie.
+ * La relation est de type One-to-Many avec cascade sur la suppression et suppression orpheline.
+ * @property dateCreation Date de création de la catégorie, définie automatiquement à l'insertion et non modifiable.
+ * @property dateModification Date de dernière modification de la catégorie, mise à jour automatiquement à chaque modification.
+ */
 @Entity
 class Categorie (
     @Id

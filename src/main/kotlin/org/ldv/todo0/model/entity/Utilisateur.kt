@@ -17,10 +17,20 @@ import jakarta.validation.constraints.*
 
 
 /**
- * Entité représentant un utilisateur en base de données.
- * Elle est mappée sur une table SQL grâce à l’annotation @Entity.
+ * Représente un utilisateur du système avec ses informations personnelles et ses relations.
+ *
+ * @property id Identifiant unique de l'utilisateur, généré automatiquement par la base de données.
+ * @property nom Nom de l'utilisateur.
+ * @property prenom Prénom de l'utilisateur.
+ * @property email Adresse e-mail de l'utilisateur, unique dans la base. Peut être utilisée comme identifiant de connexion.
+ * @property mdp Mot de passe de l'utilisateur, doit être stocké sous forme hashée (par exemple, avec BCrypt).
+ * @property confirmationMdp Mot de passe de confirmation, utilisé uniquement pour des opérations de validation (non persisté en base).
+ * @property dateCreation Date de création de l'enregistrement, initialisée automatiquement lors de la création et non modifiable.
+ * @property dateModification Date de dernière modification de l'enregistrement, mise à jour avant chaque modification enregistrée.
+ * @property role Rôle associé à cet utilisateur. La relation est de type Many-to-One.
  */
 @Entity
+
 class Utilisateur(
 
     /**

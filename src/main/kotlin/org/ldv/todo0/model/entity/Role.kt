@@ -8,6 +8,14 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
 
+/**
+ * Représente un rôle dans le système, associé à des utilisateurs.
+ *
+ * @property id Identifiant unique du rôle, généré automatiquement par la base de données.
+ * @property nom Nom ou libellé du rôle.
+ * @property utilisateurs Liste des utilisateurs associés à ce rôle.
+ * La relation est de type One-to-Many avec cascade sur toutes les opérations et suppression orpheline.
+ */
 @Entity
 class Role (
     @Id

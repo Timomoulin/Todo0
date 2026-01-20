@@ -12,6 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
+/**
+ * Controller pour la gestion des catégories dans l'espace administrateur.
+ * Permet d'effectuer les opérations CRUD (Create, Read, Update, Delete) sur les catégories.
+ *
+ * @constructor Initialise le contrôleur avec une instance de [CategorieDao] pour l'accès aux données.
+ *
+ * @param categorieDao DAO utilisé pour interagir avec la table des catégories dans la base de données.
+ */
 @Controller
 class AdminCategorieController(
     val categorieDao: CategorieDao

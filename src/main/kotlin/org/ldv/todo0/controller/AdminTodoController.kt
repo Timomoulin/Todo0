@@ -3,6 +3,7 @@ package org.ldv.todo0.controller
 import org.ldv.todo0.model.dao.CategorieDao
 import org.ldv.todo0.model.dao.TodoDao
 import org.ldv.todo0.model.entity.Todo
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
@@ -11,14 +12,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
 @Controller
 class AdminTodoController(
     val todoDao: TodoDao,
-    val categorieDao: CategorieDao
+    val categorieDao: CategorieDao,
+
 ) {
 
+    val logger = LoggerFactory.getLogger(AdminTodoController::class.java)
 
     @GetMapping("/todoapp/admin/todos")
     fun index(model: Model): String {
         val todos = todoDao.findByOrderByTitreAsc()
         model.addAttribute("todos", todos)
+
         return "pagesAdmin/todo/index"
     }
 

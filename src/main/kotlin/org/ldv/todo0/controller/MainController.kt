@@ -5,6 +5,7 @@ import org.ldv.todo0.model.dao.RoleDao
 import org.ldv.todo0.model.dao.UtilisateurDao
 import org.ldv.todo0.model.entity.Role
 import org.ldv.todo0.model.entity.Utilisateur
+import org.slf4j.LoggerFactory
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.annotation.AuthenticationPrincipal
@@ -24,6 +25,7 @@ class MainController (
     val roleDao: RoleDao,
     val passwordEncoder: PasswordEncoder
 ) {
+    val logger = LoggerFactory.getLogger(AdminTodoController::class.java)
 
     @GetMapping("/", "/todoapp/")
     fun index(): String {

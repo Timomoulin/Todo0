@@ -1,0 +1,106 @@
+2026-01-20 18:38:49,491 INFO  org.ldv.todo0.Todo0ApplicationKt - Starting Todo0ApplicationKt using Java 21.0.1 with PID 4188 (C:\Users\timom\OneDrive\Documents\Workspace\kotlin\eleve\todo0\build\classes\kotlin\main started by timom in C:\Users\timom\OneDrive\Documents\Workspace\kotlin\eleve\todo0)
+2026-01-20 18:38:49,493 INFO  org.ldv.todo0.Todo0ApplicationKt - No active profile set, falling back to 1 default profile: "default"
+2026-01-20 18:38:49,538 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-20 18:38:49,538 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-20 18:38:49,644 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-01-20 18:38:50,451 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-20 18:38:50,505 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 4 JPA repository interfaces.
+2026-01-20 18:38:51,022 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-01-20 18:38:51,033 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-01-20 18:38:51,034 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-20 18:38:51,034 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
+2026-01-20 18:38:51,075 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1537 ms
+2026-01-20 18:38:51,254 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-20 18:38:51,320 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2026-01-20 18:38:51,808 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-20 18:38:51,843 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-20 18:38:52,021 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:todoapp user=SA
+2026-01-20 18:38:52,023 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-20 18:38:52,048 WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-20 18:38:52,068 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:todoapp]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: TODOAPP/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-20 18:38:52,985 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-20 18:38:53,037 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-20 18:38:53,146 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-20 18:38:54,272 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-20 18:38:54,375 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailsService
+2026-01-20 18:38:54,861 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:todoapp'
+2026-01-20 18:38:54,906 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-01-20 18:38:54,919 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-01-20 18:38:54,924 INFO  org.ldv.todo0.Todo0ApplicationKt - Started Todo0ApplicationKt in 5.896 seconds (process running for 6.55)
+2026-01-20 18:47:04,766 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-20 18:47:04,766 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-20 18:47:04,768 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-01-20 18:47:04,973 WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][pagesVisiteur/login] Deprecated unwrapped fragment expression "base :: html" found in template pagesVisiteur/login, line 2, col 7. Please use the complete syntax of fragment expressions instead ("~{base :: html}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2026-01-20 18:47:05,072 WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][base] Deprecated unwrapped fragment expression "::content" found in template base, line 53, col 32. Please use the complete syntax of fragment expressions instead ("~{::content}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2026-01-20 18:47:11,221 ERROR o.l.t.service.MyUserDetailsService - Echec de login : utilisateur test non trouvé 
+2026-01-20 18:47:11,316 WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][pagesVisiteur/login] Deprecated unwrapped fragment expression "base :: html" found in template pagesVisiteur/login, line 2, col 7. Please use the complete syntax of fragment expressions instead ("~{base :: html}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2026-01-20 18:47:11,319 WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-5][base] Deprecated unwrapped fragment expression "::content" found in template base, line 53, col 32. Please use the complete syntax of fragment expressions instead ("~{::content}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2026-01-20 18:49:09,286 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-20 18:49:09,290 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-01-20 18:49:09,293 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-20 18:49:09,301 WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de données est déjà fermée (pour désactiver la fermeture automatique à l'arrêt de la VM, ajoutez "; DB_CLOSE_ON_EXIT = FALSE" à l'URL db)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
+2026-01-20 18:49:09,302 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-01-20 18:49:09,303 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-01-20 18:49:11,641 INFO  org.ldv.todo0.Todo0ApplicationKt - Starting Todo0ApplicationKt using Java 21.0.1 with PID 27472 (C:\Users\timom\OneDrive\Documents\Workspace\kotlin\eleve\todo0\build\classes\kotlin\main started by timom in C:\Users\timom\OneDrive\Documents\Workspace\kotlin\eleve\todo0)
+2026-01-20 18:49:11,643 INFO  org.ldv.todo0.Todo0ApplicationKt - No active profile set, falling back to 1 default profile: "default"
+2026-01-20 18:49:11,685 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-20 18:49:11,686 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-20 18:49:11,763 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-01-20 18:49:12,540 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-20 18:49:12,595 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 4 JPA repository interfaces.
+2026-01-20 18:49:13,093 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-01-20 18:49:13,104 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-01-20 18:49:13,105 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-20 18:49:13,106 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.14]
+2026-01-20 18:49:13,144 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1458 ms
+2026-01-20 18:49:13,321 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-20 18:49:13,372 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 7.1.8.Final
+2026-01-20 18:49:13,818 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-20 18:49:13,850 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-20 18:49:14,003 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:todoapp user=SA
+2026-01-20 18:49:14,004 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-20 18:49:14,025 WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-20 18:49:14,045 INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:todoapp]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: TODOAPP/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DatasourceConnectionProviderImpl
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-20 18:49:14,917 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-20 18:49:14,966 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-20 18:49:15,065 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-20 18:49:16,090 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-20 18:49:16,187 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailsService
+2026-01-20 18:49:16,665 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:todoapp'
+2026-01-20 18:49:16,707 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-01-20 18:49:16,720 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-01-20 18:49:16,724 INFO  org.ldv.todo0.Todo0ApplicationKt - Started Todo0ApplicationKt in 5.489 seconds (process running for 6.034)
+2026-01-20 18:49:20,965 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-20 18:49:20,965 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-20 18:49:20,966 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-01-20 18:49:21,287 WARN  o.t.s.p.AbstractStandardFragmentInsertionTagProcessor - [THYMELEAF][http-nio-8080-exec-1][base] Deprecated unwrapped fragment expression "::content" found in template base, line 53, col 32. Please use the complete syntax of fragment expressions instead ("~{::content}"). The old, unwrapped syntax for fragment expressions will be removed in future versions of Thymeleaf.
+2026-01-20 18:53:06,727 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-20 18:53:06,731 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-01-20 18:53:06,735 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-20 18:53:06,742 WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de données est déjà fermée (pour désactiver la fermeture automatique à l'arrêt de la VM, ajoutez "; DB_CLOSE_ON_EXIT = FALSE" à l'URL db)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
+2026-01-20 18:53:06,742 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-01-20 18:53:06,744 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

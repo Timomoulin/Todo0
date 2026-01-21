@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 class UtilisateurTodoController(
-    val todoDao: TodoDao
+    private val todoDao: TodoDao
 ) {
     @GetMapping("/todoapp/utilisateur/todos")
     fun index(): String {

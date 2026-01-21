@@ -22,11 +22,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
 @Controller
 class MainController (
-    val utilisateurDao: UtilisateurDao,
-    val roleDao: RoleDao,
-    val passwordEncoder: PasswordEncoder
+    private val utilisateurDao: UtilisateurDao,
+    private val roleDao: RoleDao,
+    private val passwordEncoder: PasswordEncoder
 ) {
-    val logger = LoggerFactory.getLogger(AdminTodoController::class.java)
+    private val logger = LoggerFactory.getLogger(AdminTodoController::class.java)
 
     @GetMapping("/", "/todoapp/")
     fun index(): String {

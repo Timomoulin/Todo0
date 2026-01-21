@@ -4,7 +4,12 @@
     <main class="py-5">
         <div class="container">
             <h1>Ma liste de todos</h1>
-
+            <ul>
+                <li th:each="unTodo : ${todos}" th:style="${'color :'+unTodo.categorie.couleur+';'}">
+                    <h3 th:text="${unTodo.titre}"></h3>
+                    <p  th:text="${'Description : '+unTodo.description}"></p>
+                </li>
+            </ul>
         </div>
     </main>
 </div>

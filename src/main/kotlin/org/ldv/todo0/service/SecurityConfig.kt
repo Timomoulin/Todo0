@@ -26,6 +26,7 @@ class SecurityConfig {
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
+            .headers { it.frameOptions { frameOptions -> frameOptions.sameOrigin() } }
             .csrf { it.disable() }
             //Restriction des endpoints en fonction du role
             .authorizeHttpRequests {

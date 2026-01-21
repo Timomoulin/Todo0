@@ -33,7 +33,12 @@ class DataInitializer (
                     description = "Vidéo de démonstration de l'application Todo0",
                     categorie = catTravail
                 )
-                todoDao.save(todoVideo)
+                val todoSport = Todo(
+                    titre = "Faire du sport",
+                    description = "Faire du sport",
+                    categorie = catLoisir
+                )
+                todoDao.saveAll(listOf(todoVideo, todoSport))
                 println("✅ Données initiales insérées : ${todoDao.count()} todo.")
             }
         }

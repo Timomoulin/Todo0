@@ -1,0 +1,71 @@
+<!doctype html>
+<html th:replace="~{base :: html}" lang="fr" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+    <main class="py-5 container">
+
+        <h1 class="mb-4">Créer un nouveau Todo</h1>
+
+        <form th:action="@{/todoapp/utilisateur/todos}"
+              th:object="${todo}"
+              method="post">
+
+            <div class="mb-3">
+                <label for="titre" class="form-label">Titre *</label>
+                <input type="text"
+                       id="titre"
+                       th:field="*{titre}"
+                       class="form-control"
+                       placeholder="Titre du todo"
+                       required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description *</label>
+                <textarea id="description"
+                          th:field="*{description}"
+                          class="form-control"
+                          rows="4"
+                          placeholder="Description du todo"
+                          required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="dateAFaire" class="form-label">A Faire Pour</label>
+                <input id="dateAFaire"
+                       th:field="*{dateAFaire}"
+                       class="form-control"
+                       type="datetime-local">
+                </input>
+            </div>
+            <div class="mb-3">
+                <div class="form-check form-switch">
+                    <input th:field="*{etreFait}" class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch>
+                    <label class="form-check-label" for="checkNativeSwitch">
+                        En cours/Fait
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="categorie">Categorie *</label>
+                <select required th:field="*{categorie}" id="categorie" class="form-select">
+                    <option selected disabled value="">Choisir une categorie</option>
+                    <option th:each="uneCategorie : ${categories}"
+                            th:value="${uneCategorie.id}"
+                            th:text="${uneCategorie.nom}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary me-2">
+                    Enregistrer
+                </button>
+                <a th:href="@{/todoapp/utilisateur/todos}" class="btn btn-secondary">
+                    Annuler
+                </a>
+            </div>
+
+        </form>
+
+    </main>
+</div>
+</html>

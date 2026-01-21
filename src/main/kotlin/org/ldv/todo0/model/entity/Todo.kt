@@ -8,6 +8,8 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.PreUpdate
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Size
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
@@ -31,7 +33,11 @@ class Todo (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     val id: Long? = null,
+
+    @field:NotBlank(message = "Le titre est obligatoire")
+    @field:Size(min = 3, max = 255, message = "Le titre doit contenir entre 3 et 255 caractères")
     val titre:String,
+
     val description:String,
     val etreFait:Boolean = false,
     val dateAFaire:LocalDateTime? = null,

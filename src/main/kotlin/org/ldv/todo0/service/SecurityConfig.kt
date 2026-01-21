@@ -30,11 +30,11 @@ class SecurityConfig {
             .csrf { it.disable() }
             //Restriction des endpoints en fonction du role
             .authorizeHttpRequests {
-                it.requestMatchers( "/h2-console/**","/todoapp" ,"/**","/todoapp/utilisateur/todos/**", "/todoapp/inscription", "/todoapp/login", "/css/**", "/js/**", "/img/**", "/favicon.ico").permitAll()
+                it.requestMatchers( "/h2-console/**","/todoapp" ,"/500","/404","/todoapp/utilisateur/todos/**", "/todoapp/inscription", "/todoapp/login", "/css/**", "/js/**", "/img/**", "/favicon.ico").permitAll()
                     // Autoriser l'accès pour les utilisateurs avec le rôle "ADMIN" à /admin/**
                     .requestMatchers("/todoapp/admin/**").hasRole("ADMIN")
                     // Autoriser l'accès pour les utilisateurs avec le rôle "UTILISATEUR" à /utilisateur/**
-                   // .requestMatchers("/todoapp/utilisateur/**").hasRole("UTILISATEUR")
+                    //.requestMatchers("/todoapp/utilisateur/**").hasAnyRole("UTILISATEUR","ADMIN")
                     // Toutes les autres requêtes doivent être authentifiées
                     .anyRequest().authenticated()
 

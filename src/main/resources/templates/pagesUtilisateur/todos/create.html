@@ -16,7 +16,13 @@
                        th:field="*{titre}"
                        class="form-control"
                        placeholder="Titre du todo"
+                       minlength="3"
+                       maxlength="255"
                        required>
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('titre')}"
+                     th:errors="*{titre}">
+                </div>
             </div>
 
             <div class="mb-3">

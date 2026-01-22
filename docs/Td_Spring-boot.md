@@ -1,12 +1,13 @@
+
 # TP – Application Todo avec Spring Boot (Kotlin)
 
 **Formation / TP – Spring Boot**  
 **Public :** BTS SIO  
 **Objectif :** Mettre en œuvre une application Web Spring Boot complète autour de la gestion de Todos, en utilisant Kotlin, Thymeleaf et Spring Security.
 
-**Lien du Projet (starter) :**
+**Lien du Projet (starter) :https://github.com/Timomoulin/todo-starter**
 
-**Lien du Projet (fin) :**
+**Lien du Projet (fin) : https://github.com/Timomoulin/Todo0**
 ## Sommaire
 
 - [A. Création du contrôleur `UtilisateurTodoController`](#a-création-du-contrôleur-utilisateurtodocontroller)
@@ -42,7 +43,7 @@
     - [D.3 Logs](#d3-logs)
 
 - [Conclusion](#conclusion)
----
+
 
 ## A. Création du contrôleur `UtilisateurTodoController`
 
@@ -66,7 +67,7 @@ class UtilisateurTodoController {
 
 > 💡 Il est recommandé d’utiliser l’auto‑complétion d’IntelliJ IDEA afin d’importer correctement l’annotation `@Controller`.
 
----
+
 
 ### A.3 Injection des DAO dans le contrôleur
 
@@ -84,11 +85,11 @@ class UtilisateurTodoController(
 
 > ℹ️ Le même principe s’applique pour l’injection dans une classe `@Service` ou `@Component`.
 
----
+
 
 ### A.4 Création d’un mapping pour afficher les Todos
 
-Nous allons créer une méthode dans le contrôleur. Le nom de la méthode n’a pas d’importance ; ici nous utilisons `index`.
+Nous allons créer une méthode dans le contrôleur. Le nom de la méthode n’a pas d’importance ; ici, nous utilisons `index`.
 
 Cette méthode doit répondre à une requête HTTP **GET**, nous utilisons donc l’annotation `@GetMapping`.
 
@@ -102,7 +103,7 @@ fun index(): String {
 - `@GetMapping` précise la méthode HTTP utilisée
 - L’argument correspond à l’endpoint exposé par l’application
 
----
+
 
 ### A.5. Affichage d’une vue Thymeleaf
 
@@ -123,7 +124,7 @@ Faire un copier/coller de template.html  et ajouter un h1 pour obtenir :
 
 
 
----
+
 
 ### A.6 Test fonctionnel
 
@@ -136,7 +137,7 @@ http://localhost:8080/todoapp/utilisateur/todos
 Vous devez voir s’afficher le titre **Ma liste de todos**.
 !["Test index"](img/7_test.png)
 
----
+
 
 ### A.7 Récupération des Todos depuis la base de données
 
@@ -163,7 +164,7 @@ Note : il existe plusieurs classes Model, la classe que l'on souhaite est : `org
 
 - La clé `todos` sera utilisée dans le template
 
----
+
 
 ### A.8. Mise à jour du template d’affichage
 
@@ -185,7 +186,7 @@ Nous utilisons Thymeleaf pour parcourir la liste des Todos et les afficher dynam
 - `th:each` permet de parcourir la collection
 - Le style est déterminé par la couleur de la catégorie
 
----
+
 ### A.9. Test fonctionnel
 Démarrer l’application puis accéder à l’URL suivante :
 
@@ -210,7 +211,7 @@ class UtilisateurTodoController(
 )
 ```
 
----
+
 
 ### B.2 Création de la méthode `create`
 
@@ -235,7 +236,7 @@ fun create(model: Model): String {
 Note :
 La convention utilisée pour les routes et les noms des templates dans le cadre des opérations de type CRUD est inspirée du framework Laravel (PHP).
 
----
+
 
 ### B.3 Création du formulaire de création
 
@@ -336,7 +337,7 @@ templates/pagesUtilisateur/todos/create.html
 > Un champ un peu particulier est la **liste déroulante** permettant de choisir une catégorie.  
   L’attribut `th:field` fonctionne de la même manière que pour les autres champs. Nous utilisons ensuite un `th:each` pour parcourir la liste des catégories et générer dynamiquement les différentes options.  
   La valeur de chaque option correspond à l’`id` de la catégorie.
----
+
 
 ### B.4 Test fonctionnel
 
@@ -382,7 +383,7 @@ Une bonne pratique consiste à utiliser une classe dédiée, par exemple TodoDTO
 
 Dans ce cas précis, même dans des edge cases, aucune information sensible n’est exposée. Cependant, l’utilisation d’un TodoDTO, bien que plus lourde pédagogiquement, permet d’avoir plus de contrôle et constitue une meilleure pratique en conditions réelles.
 
----
+
 ### C.1 Test fonctionnel
 Faite un test fonctionnel avec votre navigateur en envoyant le formulaire.
 >Note : si le message flash ne s'affiche pas ajouter le code suivant dans le template index.html : 
@@ -390,7 +391,7 @@ Faite un test fonctionnel avec votre navigateur en envoyant le formulaire.
     <div th:if="${msg}" class="alert alert-success" th:text="${msg}"></div>
 ```
 
----
+
 
 ### C.2 Validation du formulaire
 
@@ -426,7 +427,7 @@ Ajoutez les deux annotations suivantes **au-dessus de la propriété `titre`** :
 var titre: String
 ```
 ![validation back-end](img/20_validation_back.png)
----
+
 
 ### C.3 Mise à jour de la méthode `store`
 Nous retournons ensuite dans le contrôleur UtilisateurTodoController, au niveau de la méthode store :
@@ -474,7 +475,7 @@ Si aucune erreur n’est détectée :
 - Un message flash est ajouté.
 
 - Une redirection est effectuée vers la liste des todos (Post/Redirect/Get)
----
+
 
 ### C.4 Affichage des erreurs de validation
 
@@ -487,7 +488,7 @@ Sous le champ du titre, ajouter :
 </div>
 ```
 
----
+
 ### C.5 Test fonctionnel
 
 Afin de réaliser les tests, je vous recommande de procéder de l’une des manières suivantes :
@@ -522,7 +523,7 @@ Cette approche consiste à sécuriser les routes directement dans la configurati
 - Il est facile d’oublier de rendre certaines routes accessibles
 - Moins adaptée si les règles d’accès ne peuvent pas être généralisées selon les endpoints
 
----
+
 
 #### Solution 2 : Sécurisation spécifique via `@PreAuthorize`
 
@@ -539,7 +540,7 @@ Cette approche repose sur l’utilisation de l’annotation `@PreAuthorize` dire
 - Doit être activé avec l’annotation `@EnableMethodSecurity` dans le `SecurityConfig`
 
 
----
+
 
 #### Combinaison des deux approches
 
@@ -548,7 +549,7 @@ Il est tout à fait possible (et recommandé) de **combiner les deux méthodes**
 - Utiliser la méthode `filterChain()` du `SecurityConfig` pour gérer la majorité des cas
 - Gérer les exceptions ou règles spécifiques à l’aide de `@PreAuthorize`
 
----
+
 
 ### Mise en œuvre
 ### Solution 1 : Via la méthode filterChain() du `SecurityConfig`
@@ -584,7 +585,7 @@ Cette requête peut être dissimulée dans :
 
 Si l’utilisateur est connecté à l’application, la requête peut être exécutée avec ses droits.
 
----
+
 
 ## Principe de protection contre le CSRF
 
@@ -599,7 +600,6 @@ La protection contre le CSRF repose sur l’utilisation d’un **token unique** 
 👉 Si la requête est légitime (l’utilisateur a bien accédé au formulaire), les deux tokens correspondent.  
 👉 Si la requête est forgée par un attaquant, le token sera absent ou incorrect, et la requête sera bloquée.
 
----
 
 ### Implémentation avec Spring Security
 
@@ -754,7 +754,7 @@ Ce TP permet de mettre en pratique :
 - La gestion de formulaires et de la validation back‑end
 - Les bases de la sécurisation d’une application Web
 
----
+
 
 **Merci de votre attention !**
 

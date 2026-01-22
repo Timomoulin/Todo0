@@ -37,7 +37,7 @@ class MyUserDetailsService(private val utilisateurDAO: UtilisateurDao) : UserDet
          */
         val utilisateur  = utilisateurDAO.findByEmail(username)
         if(utilisateur == null){
-            logger.error("Echec de login : utilisateur {} non trouvé ", username)
+            logger.warn("Echec de login : utilisateur {} non trouvé ", username)
             throw UsernameNotFoundException("User not found")
         }
         else {
@@ -53,7 +53,6 @@ class MyUserDetailsService(private val utilisateurDAO: UtilisateurDao) : UserDet
             if (utilisateur.role != null) {
                 leRole = utilisateur.role!!.nom
             }
-            logger.warn("Tentative de login : utilisateur {} ", username)
             /**
              * Exemple alternatif (commenté) si tu utilises un héritage :
              *

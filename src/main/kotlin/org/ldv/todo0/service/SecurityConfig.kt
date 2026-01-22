@@ -1,6 +1,6 @@
 package org.ldv.todo0.service
 
-import org.ldv.todo0.controller.AdminTodoController
+import org.ldv.todo0.security.AuditAccessDeniedHandler
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,12 +13,17 @@ import org.springframework.security.config.annotation.web.configurers.LogoutConf
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
+import java.time.format.DateTimeFormatter
 
 
 @Configuration
 @EnableMethodSecurity
-class SecurityConfig {
-
+class SecurityConfig (
+    private val auditAccessDeniedHandler: AuditAccessDeniedHandler
+){
+    // Logger dédié à l'audit (fichier audit.log)
+    private val auditLogger = LoggerFactory.getLogger("AUDIT")
+    private val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
@@ -52,6 +57,17 @@ class SecurityConfig {
                 logout
                     .logoutUrl("/todoapp/logout")
                     .permitAll()
+            }
+            .exceptionHandling { exceptions ->
+                exceptions.accessDeniedHandler(auditAccessDeniedHandler)
+            }
+            .exceptionHandling { exceptions ->
+                exceptions.authenticationEntryPoint { request, response, authException ->
+                    val ip = request.remoteAddr
+                    val url = request.requestURI
+                    auditLogger.warn("Accès non authentifié depuis IP {} sur {}", ip, url)
+                    response.sendRedirect("/todoapp/login")
+                }
             }
 
         return http.build()

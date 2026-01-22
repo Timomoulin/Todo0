@@ -17,7 +17,7 @@ class AdminTodoController(
 
 ) {
 
-    val logger = LoggerFactory.getLogger(AdminTodoController::class.java)
+
 
     @GetMapping("/todoapp/admin/todos")
     fun index(model: Model): String {

@@ -5,7 +5,9 @@
         <div class="container">
             <div class="col-8 col-lg-6 mx-auto p-2  mt-3">
                 <form action="/todoapp/login" method="post">
-
+                    <input type="hidden"
+                           th:name="${_csrf.parameterName}"
+                           th:value="${_csrf.token}">
                     <h1>Login</h1>
                     <!-- Affiche le message d'erreur si l'attribut "error" est présent dans le modèle -->
                     <p th:if="${error}" class="alert alert-danger">Identifiants incorrects. Veuillez réessayer.</p>

@@ -24,7 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
 class AdminCategorieController(
    private val categorieDao: CategorieDao
 ) {
-    private val logger = LoggerFactory.getLogger(AdminTodoController::class.java)
+
 
     @GetMapping("/todoapp/admin/categories")
     fun index(model: Model): String {

@@ -26,7 +26,7 @@ class MainController (
     private val roleDao: RoleDao,
     private val passwordEncoder: PasswordEncoder
 ) {
-    private val logger = LoggerFactory.getLogger(AdminTodoController::class.java)
+
 
     @GetMapping("/", "/todoapp/")
     fun index(): String {

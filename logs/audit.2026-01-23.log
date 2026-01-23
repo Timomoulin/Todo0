@@ -1,0 +1,3 @@
+2026-01-23 05:58:16,602 WARN  Accès non authentifié depuis IP 127.0.0.1 sur /todoapp/utilisateur/todos
+2026-01-23 05:58:24,562 INFO  [2026-01-23 05:58:24] LOGIN OK : admin@admin.com depuis IP 127.0.0.1
+2026-01-23 05:58:27,676 WARN  [2026-01-23 05:58:27] ACCÈS REFUSÉ : Utilisateur ANONYME depuis IP 127.0.0.1 a tenté d'accéder à /todoapp/logout
